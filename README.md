@@ -1,7 +1,7 @@
 Powder
 ======
 
-Powder divides event processing into contexts, collectors, and processors. Built on a desire to simplify real-time computing, Powder is a real-time computing engine that links processing through PubSub. The name Powder comes from "powder metallurgy", a process of manufacturing engines using fine powdered materials.
+Powder divides event processing into contexts, collectors, and processors. Built on a desire to simplify real-time computing, Powder links processors to events via PubSub. The name Powder comes from "powder metallurgy", a process of manufacturing engines using fine powdered materials.
 
 ## Prerequisites
 You will need JDK 1.5 to run Powder locally. Because Powder is built on top of Scala, Akka, and Play!, follow the [setup guide for Play! 2.0](http://www.playframework.org/documentation/2.0.4/Installing) to successfully set up Powder.
