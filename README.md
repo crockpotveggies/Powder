@@ -1,7 +1,7 @@
 Powder
 ======
 
-Powder is event-based processing made simple for Scala. It divides real-time computing into contexts, events, and processors. Built on a desire to simplify real-time computing, Powder links processors to events via PubSub. The name Powder comes from "powder metallurgy", a process of manufacturing engines using fine powdered materials.
+Powder is event-based processing made simple for Scala. It divides real-time computing into contexts, events, and processors. Built on a desire to simplify real-time computing and make it thread-safe, Powder links processors to events via PubSub. The name Powder comes from "powder metallurgy", a process of manufacturing engines using fine powdered materials.
 
 ## Prerequisites
 You will need JDK 1.5 to run Powder locally. Because Powder is built on top of Scala and Akka.
@@ -15,7 +15,7 @@ Powder is a prototype and this instance of Powder was built to demonstrate a gam
 The example is built using Play! 2.0. Follow the [setup guide for Play! 2.0](http://www.playframework.org/documentation/2.0.4/Installing) to successfully set up Powder example.
 
 ## Usage
-The recommended folder structure to place in your MVC (or other structure) looks like:
+The recommended folder structure to place in your app looks like:
 
     / engine
       / context
@@ -56,7 +56,9 @@ Create a listener that will tune in to a PubSub channel of your choosing. Define
       
     }
 
-Now let's create a couple processors to deal with this data. Create two files in the processor folder called AnalyzeWidth.scala and AnalyzeHeight.scala and override the method receive:
+Now let's create a couple processors to deal with this data. Create two files in the processor folder and override the method receive:
+
+AnalyzeWidth.scala
 
     package app.engine.processor
     
@@ -72,6 +74,7 @@ Now let's create a couple processors to deal with this data. Create two files in
     
     }
 
+AnalyzeHeight.scala
 
     package app.engine.processor
     
