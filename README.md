@@ -1,7 +1,7 @@
 Powder
 ======
 
-Powder is event-based processing made simple for Scala. It divides real-time computing into contexts, events, and processors. Built on a desire to simplify real-time computing and make it thread-safe, Powder links processors to events via PubSub. The name Powder comes from "powder metallurgy", a process of manufacturing engines using fine powdered materials.
+Powder is event-based processing made simple for Scala. It allows you to organize computing into custom events and create listeners that pass event data to thread-safe processors. It's built as an extension for Akka, and Powder organizes everything using PubSub. The name Powder comes from "powder metallurgy", a process of manufacturing engines using fine powdered materials.
 
 ## Prerequisites
 You will need JDK 1.5 to run Powder locally. Because Powder is built on top of Scala and Akka.
@@ -33,7 +33,7 @@ First define your events, listeners, and processors. For this example we will no
     
     class Explosion(
     
-      channel: String,    // if you do not define this property, the Event will broadcast to all listeners by default
+      channel: String,    // if you do not define this property, the Event will be picked up by listeners subscribed to "/"
       width: Int, 
       height: Int
       
