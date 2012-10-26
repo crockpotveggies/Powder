@@ -14,5 +14,10 @@ package com.alloyengine.powder
 /**
  * powder event
  */
-class Event( val channel: String = "/" )
+class Listener(
+
+  val channels: Seq[String],
+  val processors: Seq[Class[_ <: Processor]]
+
+)
 

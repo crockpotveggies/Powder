@@ -42,11 +42,11 @@ import com.codahale.jerkson.Json._
 /**
  * powder event
  */
-private[powder] class EventActor(val event: Event) extends Actor {
+private[powder] class ListenerActor(val listener: Listener) extends Actor {
   
   def receive = {
     case data =>
-      event.processors.foreach { processor =>
+      listener.processors.foreach { processor =>
         val processor = registerProcessor(processor)
         processor ! data 
       }

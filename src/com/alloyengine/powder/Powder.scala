@@ -84,9 +84,9 @@ class PowderExtension(system: ActorSystem) extends Extension {
    * @param eventParameters a type of [[com.alloyengine.powder.Event]] to configure the socket
    * @return the [[akka.actor.ActorRef]]
    */
-  def registerEvent(eventParameters: Event): ActorRef = {
-    val subscriber = eventSystem.actorOf(newEventProps(eventParameters))
-    eventParameters.channels.map { channel => 
+  def registerListener(listener: Listener): ActorRef = {
+    val subscriber = eventSystem.actorOf(newEventProps(listener))
+    listener.channels.map { channel => 
       eventBus.subscribe( subscriber, channel )
     }
     subscriber.mapTo[ActorRef]
