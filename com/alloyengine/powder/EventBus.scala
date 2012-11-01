@@ -27,7 +27,7 @@ case class PowderEvent( val channel: String, val data: EventData )
 /**
  * event bus handles routing of all the different events
  */
-class EventBus extends ActorEventBus with SubchannelClassification {
+class MessageBus extends ActorEventBus with SubchannelClassification {
 
 	type Event = PowderEvent
   type Classifier = String

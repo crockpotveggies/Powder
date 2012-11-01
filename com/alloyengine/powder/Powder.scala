@@ -18,11 +18,7 @@ import akka.actor._
  */
 object Powder {
   
-  private val instance = new Powder
-  
-  def getInstance = instance
-  
-  val powderDispatch = "com.alloyengine.powder.dispatcher"
+  val getInstance = new Powder
   
 }
 
@@ -33,7 +29,7 @@ class Powder {
 
   val instanceID = new java.util.Random().nextInt(77777).toString
   
-  val eventBus = new EventBus
+  val eventBus = new MessageBus
   private val eventSystem = ActorSystem("events")
   
   private val processorSystem = ActorSystem("processors")
@@ -48,6 +44,15 @@ class Powder {
    */
   def publish(event: PowderEvent) = {
     eventBus.publish( event )
+  }
+  
+  /**
+   * Helper method to publish an event on the EventBus.
+   * @param eventParameters a type of [[com.alloyengine.powder.Event]] to configure the socket
+   * @return the [[akka.actor.ActorRef]]
+   */
+  def subscribe(actorRef: ActorRef, channel: String) = {
+    eventBus.subscribe( actorRef, channel )
   }
   
   /**
