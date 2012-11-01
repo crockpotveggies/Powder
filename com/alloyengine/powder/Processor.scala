@@ -10,9 +10,16 @@
  */
 package com.alloyengine.powder
 
+import akka.actor._
 
 /**
- * powder event
+ * powder processor
  */
-class Event( val channel: String = "/" )
+abstract class Processor (
+  
+) extends Actor {
+  
+  def receive: Receive
+  
+}
 

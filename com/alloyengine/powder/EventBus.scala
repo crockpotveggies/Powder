@@ -10,12 +10,6 @@
  */
 package com.alloyengine.powder
 
-import play.api._
-import play.api.mvc._
-import play.api.Logger
-import play.api.Play.current
-import play.api.db.DB
-
 import akka._
 import akka.actor._
 import akka.actor.Actor._
@@ -23,32 +17,19 @@ import akka.event.ActorEventBus
 import akka.event.SubchannelClassification
 import akka.util.Subclassification
 
-import models._
+/**
+ * powder event setup
+ */
+trait EventData
 
-import engine.logic._
-import engine.socket.msg._
-import engine.socket.context._
-import engine.socket.MessageWrap._
-
-import scala.collection.mutable.Map
-import java.util.Date
-import com.codahale.logula.Logging
-import org.webbitserver._
-
-import org.squeryl._
-import org.squeryl.adapters.PostgreSqlAdapter
-import org.squeryl.PrimitiveTypeMode._
-
-import com.codahale.jerkson.Json._
-
-
+case class PowderEvent( val channel: String, val data: EventData )
 
 /**
  * event bus handles routing of all the different events
  */
 class EventBus extends ActorEventBus with SubchannelClassification {
 
-	type Event = Event
+	type Event = PowderEvent
   type Classifier = String
   
   protected implicit def subclassification: Subclassification[Classifier] = 
